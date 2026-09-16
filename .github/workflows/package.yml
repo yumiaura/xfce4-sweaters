@@ -56,9 +56,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release view "$GITHUB_REF_NAME" > /dev/null 2>&1 || gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --generate-notes
-          # A second copy with a fixed name gives releases/latest/download a stable URL.
-          cp dist/xfce4-sweaters_*_all.deb dist/xfce4-sweaters_all.deb
-          gh release upload "$GITHUB_REF_NAME" dist/*.deb --clobber
+          # The release carries exactly one asset with a fixed name, so releases/latest/download has a stable URL.
+          cp dist/xfce4-sweaters_*_all.deb "$RUNNER_TEMP/xfce4-sweaters_all.deb"
+          gh release upload "$GITHUB_REF_NAME" "$RUNNER_TEMP/xfce4-sweaters_all.deb" --clobber
   apt:
     if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
     needs: deb
@@ -82,8 +82,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           mkdir site
+          # Each release holds one xfce4-sweaters_all.deb; the pool needs versioned names, taken from the tag.
           for tag in $(gh release list --repo "$GITHUB_REPOSITORY" --json tagName -q '.[].tagName'); do
-            gh release download "$tag" --repo "$GITHUB_REPOSITORY" --dir site --pattern 'xfce4-sweaters_[0-9]*_all.deb' --skip-existing
+            gh release download "$tag" --repo "$GITHUB_REPOSITORY" --pattern 'xfce4-sweaters_all.deb' --output "site/xfce4-sweaters_${tag#v}_all.deb"
           done
           ls -l site
       - name: Build and sign the flat repository
