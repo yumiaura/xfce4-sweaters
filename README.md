@@ -3,7 +3,7 @@
 Knitted borders for XFCE4 windows on Linux. Every window gets its own
 pattern: random by default, or one you choose.
 
-**0.0.0, first experimental release. XFCE4 / Xfwm4, X11, compositor
+**First experimental release. XFCE4 / Xfwm4, X11, compositor
 enabled. Wayland is not supported.**
 
 ![Sample textures rendered by the application](docs/textures.png)

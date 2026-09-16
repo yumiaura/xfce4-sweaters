@@ -27,7 +27,7 @@ class InstallTests(unittest.TestCase):
                 self.assertEqual(installer.main(),0)
             launcher=home/'.local/bin/xfce4-sweaters'
             result=subprocess.run([str(launcher),'--version'],capture_output=True,text=True,env={**os.environ,**env},check=True)
-            self.assertEqual(result.stdout.strip(),'0.0.0')
+            self.assertEqual(result.stdout.strip(),'0.0.1')
             desktop=(data/'applications/xfce4-sweaters.desktop').read_text()
             self.assertIn(' settings\n',desktop)
             self.assertIn(' run\n',(configs/'autostart/xfce4-sweaters.desktop').read_text())
