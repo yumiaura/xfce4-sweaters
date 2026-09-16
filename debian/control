@@ -1,0 +1,19 @@
+Source: xfce4-sweaters
+Section: x11
+Priority: optional
+Maintainer: Olya Pimenova <yumi4tyan@gmail.com>
+Build-Depends: debhelper-compat (= 13), dh-python, python3-all, python3-setuptools, pybuild-plugin-pyproject
+Standards-Version: 4.6.2
+Homepage: https://github.com/yumiaura/xfce4-sweaters
+Rules-Requires-Root: no
+
+Package: xfce4-sweaters
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends}, python3-gi, python3-gi-cairo, python3-cairo, python3-pil, python3-xlib, gir1.2-gtk-3.0
+Recommends: xfwm4
+Description: Knitted borders for XFCE4 windows on X11
+ Draws a click-through knitted border around every window managed by
+ Xfwm4. Ships 47 built-in knitting charts, gives each window a stable
+ random pattern and colour by default, supports persistent rules by
+ WM_CLASS and title, custom PNG textures, a GTK settings window and a
+ panel icon. Requires an X11 session with the XFCE compositor enabled.

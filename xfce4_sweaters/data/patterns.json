@@ -1,0 +1,751 @@
+[
+  {
+    "id": "blue-check",
+    "name": "Blue Check",
+    "rows": [
+      "..aaaa....aaaa..",
+      "..aaaa....aaaa..",
+      "..aaaa....aaaa..",
+      "aa....aaaa....aa",
+      "aa....aaaa....aa",
+      "b...b......b...b"
+    ],
+    "colors": [
+      "#b7e4f7",
+      "#24558b"
+    ]
+  },
+  {
+    "id": "green-stripes",
+    "name": "Green Stripes",
+    "rows": [
+      "aa....aa",
+      "aa....aa",
+      "aa....aa",
+      "aa....aa",
+      "aa....aa",
+      "aa....aa"
+    ],
+    "colors": [
+      "#a5bda0"
+    ]
+  },
+  {
+    "id": "cream-grey-stripes",
+    "name": "Cream & Grey Stripes",
+    "rows": [
+      "aaa.b..b.aaa",
+      "aaa.b..b.aaa",
+      "aaa.b..b.aaa",
+      "aaa.b..b.aaa",
+      "aaa.b..b.aaa",
+      "aaa.b..b.aaa"
+    ],
+    "colors": [
+      "#eeece4",
+      "#868a88"
+    ]
+  },
+  {
+    "id": "white-chevron",
+    "name": "White Chevron",
+    "rows": [
+      "a....aa....a",
+      "aa........aa",
+      ".aa......aa.",
+      "..aa....aa..",
+      "...aa..aa...",
+      "....aaaa...."
+    ],
+    "colors": [
+      "#f4efee"
+    ]
+  },
+  {
+    "id": "cream-sprigs",
+    "name": "Cream Sprigs",
+    "rows": [
+      "............",
+      "..a.....a...",
+      ".aaa...aaa..",
+      "..a.....a...",
+      "............",
+      "............"
+    ],
+    "colors": [
+      "#f7e8c5"
+    ]
+  },
+  {
+    "id": "cream-pink-pinstripe",
+    "name": "Cream & Pink Pinstripe",
+    "rows": [
+      "aa.....b....",
+      "aa.....b....",
+      "aa.....b....",
+      "aa.....b....",
+      "aa.....b....",
+      "aa.....b...."
+    ],
+    "colors": [
+      "#e6e6ce",
+      "#e9bfcb"
+    ]
+  },
+  {
+    "id": "yellow-check",
+    "name": "Yellow Check",
+    "rows": [
+      "...aaa...aaa",
+      "...aaa...aaa",
+      "...aaa...aaa",
+      "aaa...aaa...",
+      "aaa...aaa...",
+      "aaa...aaa..."
+    ],
+    "colors": [
+      "#e5d586"
+    ]
+  },
+  {
+    "id": "charcoal-check",
+    "name": "Charcoal Check",
+    "rows": [
+      "...aaa...aaa",
+      "...aaa...aaa",
+      "...aaa...aaa",
+      "aaa...aaa...",
+      "aaa...aaa...",
+      "aaa...aaa..."
+    ],
+    "colors": [
+      "#494947"
+    ]
+  },
+  {
+    "id": "green-pink-stripes",
+    "name": "Green & Pink Stripes",
+    "rows": [
+      "aaaa....b...",
+      "aaaa....b...",
+      "aaaa....b...",
+      "aaaa....b...",
+      "aaaa....b...",
+      "aaaa....b..."
+    ],
+    "colors": [
+      "#dde9bc",
+      "#e3a2b8"
+    ]
+  },
+  {
+    "id": "pastel-patchwork",
+    "name": "Pastel Patchwork",
+    "rows": [
+      "aabb....cc..",
+      "aabb....cc..",
+      "aabb....cc..",
+      "....ddee....",
+      "....ddee....",
+      "....ddee...."
+    ],
+    "colors": [
+      "#eaaf96",
+      "#dcd092",
+      "#8dbccf",
+      "#afc5a1",
+      "#ded3e9"
+    ]
+  },
+  {
+    "id": "four-colour-blocks",
+    "name": "Four Colour Blocks",
+    "rows": [
+      "....aaaaaaaa........bbbbbbbb........dddddddd........aaaaaaaa........bbbbbbbb........dddddddd........cccccccc....",
+      "....aaaaaaaa........bbbbbbbb........dddddddd........aaaaaaaa........bbbbbbbb........dddddddd........cccccccc....",
+      "....aaaaaaaa........bbbbbbbb........dddddddd........aaaaaaaa........bbbbbbbb........dddddddd........cccccccc....",
+      "aaaa........bbbbbbbb........dddddddd........aaaaaaaa........bbbbbbbb........dddddddd........cccccccc........aaaa",
+      "aaaa........bbbbbbbb........dddddddd........aaaaaaaa........bbbbbbbb........dddddddd........cccccccc........aaaa",
+      "aaaa........bbbbbbbb........dddddddd........aaaaaaaa........bbbbbbbb........dddddddd........cccccccc........aaaa"
+    ],
+    "colors": [
+      "#d8675b",
+      "#6ba776",
+      "#4285f4",
+      "#edcc70"
+    ]
+  },
+  {
+    "id": "white-squares",
+    "name": "White Squares",
+    "rows": [
+      "..aaaa..",
+      ".a...a..",
+      ".a.b.a..",
+      ".aaaaa..",
+      ".aaa....",
+      "........"
+    ],
+    "colors": [
+      "#f5f5f2",
+      "#5f8bce"
+    ]
+  },
+  {
+    "id": "cream-snowflakes",
+    "name": "Cream Snowflakes",
+    "rows": [
+      "..a.....a...",
+      ".aaa...aaa..",
+      "aabaa.aabaa.",
+      ".aaa...aaa..",
+      "..a.....a...",
+      "............"
+    ],
+    "colors": [
+      "#f6f2e8",
+      "#ed7066"
+    ]
+  },
+  {
+    "id": "orange-diagonal",
+    "name": "Orange Diagonal",
+    "rows": [
+      "a.....a.....",
+      "aa....aa....",
+      ".aa....aa...",
+      "..bb....bb..",
+      "...bb....bb.",
+      "....b.....b."
+    ],
+    "colors": [
+      "#ff873e",
+      "#ffc167"
+    ]
+  },
+  {
+    "id": "grey-chevron",
+    "name": "Grey Chevron",
+    "rows": [
+      "a....aa....a",
+      "aa........aa",
+      ".aa......aa.",
+      "..aa....aa..",
+      "...aa..aa...",
+      "....aaaa...."
+    ],
+    "colors": [
+      "#c4c2b9"
+    ]
+  },
+  {
+    "id": "four-colour-sprigs",
+    "name": "Four Colour Sprigs",
+    "rows": [
+      ".a......b...",
+      "aaa....bbb..",
+      ".a......b...",
+      "....c......d",
+      "...ccc....dd",
+      "....c......d"
+    ],
+    "colors": [
+      "#63c5df",
+      "#82c5a6",
+      "#edc45e",
+      "#e986a3"
+    ]
+  },
+  {
+    "id": "blue-line-squares",
+    "name": "Blue Line Squares",
+    "rows": [
+      ".aaaa...aaaa",
+      ".abba...abba",
+      ".abba...abba",
+      ".aaaa...aaaa",
+      "............",
+      "bbbbbbbbbbbb"
+    ],
+    "colors": [
+      "#f6f8f4",
+      "#9ec7f5"
+    ]
+  },
+  {
+    "id": "blue-dashes",
+    "name": "Blue Dashes",
+    "rows": [
+      "a.....a.....",
+      "aa....aa....",
+      "aba...aba...",
+      ".aba...aba..",
+      "..aa....aa..",
+      "...a.....a.."
+    ],
+    "colors": [
+      "#f5f5ec",
+      "#addde8"
+    ]
+  },
+  {
+    "id": "green-white-sprigs",
+    "name": "Green & White Sprigs",
+    "rows": [
+      "................",
+      "..aa......aa....",
+      "..aa......aa....",
+      "................",
+      "......bb......bb",
+      "......bb......bb"
+    ],
+    "colors": [
+      "#f8f7e8",
+      "#b7db8d"
+    ]
+  },
+  {
+    "id": "blue-line-chevron",
+    "name": "Blue Line Chevron",
+    "rows": [
+      "a.....a.....",
+      ".a...a.a...a",
+      "..a.a...a.a.",
+      "...a.....a..",
+      "............",
+      "bbbbbbbbbbbb"
+    ],
+    "colors": [
+      "#f5f5f0",
+      "#b3d8ee"
+    ]
+  },
+  {
+    "id": "yellow-stripes",
+    "name": "Yellow Stripes",
+    "rows": [
+      "aaaaaaaaaaaa",
+      "aaaaaaaaaaaa",
+      "............",
+      "............",
+      "............",
+      "bbbbbbbbbbbb"
+    ],
+    "colors": [
+      "#efc852",
+      "#fffcf3"
+    ]
+  },
+  {
+    "id": "red-stripes",
+    "name": "Red Stripes",
+    "rows": [
+      "aaaaaaaaaaaa",
+      "aaaaaaaaaaaa",
+      "............",
+      "............",
+      "............",
+      "............"
+    ],
+    "colors": [
+      "#e55c52"
+    ]
+  },
+  {
+    "id": "confetti-sprigs",
+    "name": "Confetti Sprigs",
+    "rows": [
+      "a.dd..b.dd..",
+      "............",
+      "c.dd..a.dd..",
+      "............",
+      "b.dd..c.dd..",
+      "............"
+    ],
+    "colors": [
+      "#579fde",
+      "#e5787a",
+      "#eba451",
+      "#ccc6ba"
+    ]
+  },
+  {
+    "id": "pink-diagonal",
+    "name": "Pink Diagonal",
+    "rows": [
+      "a.....a.....",
+      "aa....aa....",
+      ".aa....aa...",
+      "..bb....bb..",
+      "...bb....bb.",
+      "....b.....b."
+    ],
+    "colors": [
+      "#f7acc0",
+      "#fff0db"
+    ]
+  },
+  {
+    "id": "rainbow-sprigs",
+    "name": "Rainbow Sprigs",
+    "rows": [
+      ".a...c...e..",
+      "aaa.ccc.eee.",
+      ".a...c...e..",
+      "...b...d...f",
+      "..bbb.ddd.ff",
+      "...b...d...f"
+    ],
+    "colors": [
+      "#efa470",
+      "#eccb67",
+      "#95ba78",
+      "#7bbbc9",
+      "#9991c1",
+      "#d98bac"
+    ]
+  },
+  {
+    "id": "blue-windowpane",
+    "name": "Blue Windowpane",
+    "rows": [
+      "bbbbbbbbbbbb",
+      "b.....b.....",
+      "b..a..b..a..",
+      "b.aaa.b.aaa.",
+      "baaaaabaaaaa",
+      "bbbbbbbbbbbb"
+    ],
+    "colors": [
+      "#f2f4ef",
+      "#aacfdd"
+    ]
+  },
+  {
+    "id": "blue-white-chevron",
+    "name": "Blue & White Chevron",
+    "rows": [
+      "a....aa....a",
+      "aa........aa",
+      ".aa......aa.",
+      "..bb....bb..",
+      "...bb..bb...",
+      "....bbbb...."
+    ],
+    "colors": [
+      "#f3f1e6",
+      "#82a8de"
+    ]
+  },
+  {
+    "id": "green-plaid",
+    "name": "Green Plaid",
+    "rows": [
+      "aa...baa...b",
+      "aa...baa...b",
+      "bbbbbbbbbbbb",
+      "..aa.b..aa.b",
+      "..aa.b..aa.b",
+      "bbbbbbbbbbbb"
+    ],
+    "colors": [
+      "#82b99a",
+      "#dbead0"
+    ]
+  },
+  {
+    "id": "peach-gingham",
+    "name": "Peach Gingham",
+    "rows": [
+      ".aaaa...aaaa",
+      ".abba...abba",
+      ".abba...abba",
+      ".aaaa...aaaa",
+      "............",
+      "..b.....b..."
+    ],
+    "colors": [
+      "#eea58a",
+      "#f5d9b8"
+    ]
+  },
+  {
+    "id": "blue-gingham",
+    "name": "Blue Gingham",
+    "rows": [
+      "aaa...aaa...",
+      "aba...aba...",
+      "aab...aab...",
+      "...aaa...aaa",
+      "...aba...aba",
+      "...aab...aab"
+    ],
+    "colors": [
+      "#8ac6ec",
+      "#f5f5ea"
+    ]
+  },
+  {
+    "id": "navy-lattice",
+    "name": "Navy Lattice",
+    "rows": [
+      "a....ba....b",
+      ".a..ab.a..ab",
+      "..aa.b..aa.b",
+      "..aa.b..aa.b",
+      ".a..ab.a..ab",
+      "a....ba....b"
+    ],
+    "colors": [
+      "#b6e1ed",
+      "#17374f"
+    ]
+  },
+  {
+    "id": "sky-check",
+    "name": "Sky Check",
+    "rows": [
+      "aaaa..aaaa..",
+      "a..a..a..a..",
+      "aaaa..aaaa..",
+      "...bbb...bbb",
+      "...b.b...b.b",
+      "...bbb...bbb"
+    ],
+    "colors": [
+      "#58b7e9",
+      "#8cbad0"
+    ]
+  },
+  {
+    "id": "orange-bands",
+    "name": "Orange Bands",
+    "rows": [
+      "...baaaab...",
+      "...baaaab...",
+      "...baaaab...",
+      "...baaaab...",
+      "...baaaab...",
+      "...baaaab..."
+    ],
+    "colors": [
+      "#f5a13d",
+      "#f8d2a0"
+    ]
+  },
+  {
+    "id": "green-bands",
+    "name": "Green Bands",
+    "rows": [
+      "...aaaaaa...",
+      "...aaaaaa...",
+      "...aaaaaa...",
+      "...aaaaaa...",
+      "...aaaaaa...",
+      "...aaaaaa..."
+    ],
+    "colors": [
+      "#8ba66a"
+    ]
+  },
+  {
+    "id": "cream-chevron",
+    "name": "Cream Chevron",
+    "rows": [
+      "a....aa....a",
+      "aa........aa",
+      ".aa......aa.",
+      "..aa....aa..",
+      "...aa..aa...",
+      "....aaaa...."
+    ],
+    "colors": [
+      "#f6f0de"
+    ]
+  },
+  {
+    "id": "white-pinstripe",
+    "name": "White Pinstripe",
+    "rows": [
+      "aa..........",
+      "aa..........",
+      "aa..........",
+      "aa..........",
+      "aa..........",
+      "aa.........."
+    ],
+    "colors": [
+      "#ecebe4"
+    ]
+  },
+  {
+    "id": "braid",
+    "name": "Braid",
+    "rows": [
+      "abb........a",
+      "a.bb......aa",
+      "...bb....aaa",
+      "....bb..aaa.",
+      ".....bbaaa..",
+      "......bba...",
+      ".....aabb...",
+      "....aaa.bb..",
+      "...aaa...bb.",
+      "..aaa.....bb",
+      "baaa.......b",
+      "bba........."
+    ],
+    "colors": [
+      "#f6f0de",
+      "#f078aa"
+    ]
+  },
+  {
+    "id": "blockstripe",
+    "name": "Blockstripe",
+    "rows": [
+      "...aaa"
+    ],
+    "colors": [
+      "#ffffff"
+    ]
+  },
+  {
+    "id": "checker",
+    "name": "Checker",
+    "rows": [
+      "..aa",
+      "..aa",
+      "aa..",
+      "aa.."
+    ],
+    "colors": [
+      "#f2eee4"
+    ]
+  },
+  {
+    "id": "seedling",
+    "name": "Seedling",
+    "rows": [
+      "....a.",
+      "....a.",
+      "...a.a",
+      ".a....",
+      ".a....",
+      "a.a..."
+    ],
+    "colors": [
+      "#96d6a0"
+    ]
+  },
+  {
+    "id": "trim",
+    "name": "Trim",
+    "rows": [
+      "...a....a.",
+      "..........",
+      "bb...bb...",
+      "..........",
+      "c...cc...c",
+      "cc...cc..."
+    ],
+    "colors": [
+      "#ffffff",
+      "#f58220",
+      "#d61e6e"
+    ]
+  },
+  {
+    "id": "picnic",
+    "name": "Picnic",
+    "rows": [
+      "...aaa...aaa",
+      "...aaa...aaa",
+      "...aaa...aaa",
+      "aaa...aaa...",
+      "aaa...aaa...",
+      "aaa...aaa..."
+    ],
+    "colors": [
+      "#f4e6bf"
+    ]
+  },
+  {
+    "id": "ribbon",
+    "name": "Ribbon",
+    "rows": [
+      "aa.....b....",
+      "aa.....b....",
+      "aa.....b....",
+      "aa.....b....",
+      "aa.....b....",
+      "aa.....b...."
+    ],
+    "colors": [
+      "#f5e8cf",
+      "#e3a1b3"
+    ]
+  },
+  {
+    "id": "posy",
+    "name": "Posy",
+    "rows": [
+      "............",
+      ".aa.aa......",
+      ".aaaaa......",
+      "..aba.......",
+      ".a...a......",
+      "............"
+    ],
+    "colors": [
+      "#f0d1db",
+      "#f2dd9d"
+    ]
+  },
+  {
+    "id": "twinkle",
+    "name": "Twinkle",
+    "rows": [
+      "............",
+      "..a.....a...",
+      ".aaa...aaa..",
+      "..a.....a...",
+      "............",
+      "............"
+    ],
+    "colors": [
+      "#f5e6bf"
+    ]
+  },
+  {
+    "id": "candy-stripe",
+    "name": "Candy Stripe",
+    "rows": [
+      "aaa...bbb...",
+      "aaa...bbb...",
+      "aaa...bbb...",
+      "aaa...bbb...",
+      "aaa...bbb...",
+      "aaa...bbb..."
+    ],
+    "colors": [
+      "#f5e8cf",
+      "#e3a1b3"
+    ]
+  },
+  {
+    "id": "zigzag",
+    "name": "Zigzag",
+    "rows": [
+      "a....aa....a",
+      "aa........aa",
+      ".aa......aa.",
+      "..aa....aa..",
+      "...aa..aa...",
+      "....aaaa...."
+    ],
+    "colors": [
+      "#f2d2dc"
+    ]
+  }
+]

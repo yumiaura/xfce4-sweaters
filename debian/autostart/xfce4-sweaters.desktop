@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=XFCE4 Sweaters
+Comment=Knitted window borders
+Exec=xfce4-sweaters run
+Icon=preferences-desktop-theme
+Terminal=false
+Categories=Settings;DesktopSettings;
+OnlyShowIn=XFCE;

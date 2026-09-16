@@ -1,0 +1,115 @@
+name: package
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  deb:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install build dependencies
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends build-essential devscripts debhelper dh-python python3-all python3-setuptools pybuild-plugin-pyproject lintian desktop-file-utils
+      - name: Check that package, changelog and tag versions agree
+        run: |
+          version=$(/usr/bin/python3 -c 'import xfce4_sweaters; print(xfce4_sweaters.__version__)')
+          test "$(dpkg-parsechangelog -S Version)" = "$version"
+          case "$GITHUB_REF" in refs/tags/*) test "$GITHUB_REF_NAME" = "v$version" ;; esac
+      - name: Build the .deb
+        run: |
+          dpkg-buildpackage -us -uc -b
+          mkdir -p dist && mv ../xfce4-sweaters_*_all.deb dist/
+          dpkg-deb --info dist/xfce4-sweaters_*_all.deb
+          dpkg-deb --contents dist/xfce4-sweaters_*_all.deb
+      - name: Lintian
+        run: lintian --fail-on error dist/xfce4-sweaters_*_all.deb
+      - name: Install with apt
+        run: sudo apt-get install -y ./dist/xfce4-sweaters_*_all.deb
+      - name: Verify the installed package
+        run: |
+          cd /
+          test "$(xfce4-sweaters --version)" = "$(dpkg-query -W -f '${Version}' xfce4-sweaters)"
+          xfce4-sweaters list-textures | grep -qx zigzag
+          xfce4-sweaters check-config > /dev/null
+          desktop-file-validate /usr/share/applications/xfce4-sweaters.desktop /etc/xdg/autostart/xfce4-sweaters.desktop
+      - name: Smoke test against the installed package
+        run: |
+          sudo apt-get install -y --no-install-recommends xvfb xfwm4 dbus-x11 x11-utils
+          # Run the script from outside the checkout so it imports the installed package, not the source tree.
+          mkdir -p "$RUNNER_TEMP/smoke" && cp tests/smoke_x11.py "$RUNNER_TEMP/smoke/"
+          cd "$RUNNER_TEMP" && dbus-run-session -- xvfb-run -a -s '-screen 0 1280x800x24 +extension Composite' /usr/bin/python3 smoke/smoke_x11.py
+      - name: Remove the package cleanly
+        run: sudo apt-get remove -y xfce4-sweaters && ! command -v xfce4-sweaters
+      - uses: actions/upload-artifact@v4
+        with:
+          name: xfce4-sweaters-deb
+          path: dist/*.deb
+      - name: Attach the .deb to the GitHub release
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view "$GITHUB_REF_NAME" > /dev/null 2>&1 || gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --generate-notes
+          # A second copy with a fixed name gives releases/latest/download a stable URL.
+          cp dist/xfce4-sweaters_*_all.deb dist/xfce4-sweaters_all.deb
+          gh release upload "$GITHUB_REF_NAME" dist/*.deb --clobber
+  apt:
+    if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
+    needs: deb
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Install repository tools
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends dpkg-dev apt-utils gnupg
+      - name: Import the signing key
+        env:
+          APT_GPG_PRIVATE_KEY: ${{ secrets.APT_GPG_PRIVATE_KEY }}
+        run: printf '%s\n' "$APT_GPG_PRIVATE_KEY" | gpg --batch --import
+      - name: Collect the .deb of every release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir site
+          for tag in $(gh release list --repo "$GITHUB_REPOSITORY" --json tagName -q '.[].tagName'); do
+            gh release download "$tag" --repo "$GITHUB_REPOSITORY" --dir site --pattern 'xfce4-sweaters_[0-9]*_all.deb' --skip-existing
+          done
+          ls -l site
+      - name: Build and sign the flat repository
+        run: |
+          cd site
+          dpkg-scanpackages --multiversion . /dev/null > Packages
+          gzip -9 -k Packages
+          apt-ftparchive -o APT::FTPArchive::Release::Origin=xfce4-sweaters -o APT::FTPArchive::Release::Label=xfce4-sweaters -o APT::FTPArchive::Release::Suite=stable -o APT::FTPArchive::Release::Description='Cozy knitted borders for your XFCE4 windows' release . > Release
+          gpg --batch --yes --armor --detach-sign --output Release.gpg Release
+          gpg --batch --yes --clearsign --output InRelease Release
+          gpg --batch --export > xfce4-sweaters.gpg
+          cat > index.html <<'HTML'
+          <!doctype html>
+          <meta charset="utf-8">
+          <title>xfce4-sweaters APT repository</title>
+          <style>body{font:16px/1.5 system-ui,sans-serif;max-width:48rem;margin:3rem auto;padding:0 1rem;background:#1e1b21;color:#ece7ee}pre{background:#2b2730;padding:1rem;overflow-x:auto}a{color:#9ec7f5}</style>
+          <h1>xfce4-sweaters APT repository</h1>
+          <p>Cozy knitted borders for your XFCE4 windows. Add the repository once, then install and update with apt:</p>
+          <pre>sudo curl -fsSL -o /usr/share/keyrings/xfce4-sweaters.gpg https://yumiaura.github.io/xfce4-sweaters/xfce4-sweaters.gpg
+          echo 'deb [signed-by=/usr/share/keyrings/xfce4-sweaters.gpg] https://yumiaura.github.io/xfce4-sweaters ./' | sudo tee /etc/apt/sources.list.d/xfce4-sweaters.list
+          sudo apt update &amp;&amp; sudo apt install xfce4-sweaters</pre>
+          <p>Source, releases and documentation: <a href="https://github.com/yumiaura/xfce4-sweaters">github.com/yumiaura/xfce4-sweaters</a></p>
+          HTML
+          ls -l
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4

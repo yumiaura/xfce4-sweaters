@@ -1,0 +1,20 @@
+name: tests
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  core:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install desktop and test dependencies
+        run: sudo apt-get update && sudo apt-get install -y python3-gi python3-gi-cairo python3-cairo python3-pil python3-xlib gir1.2-gtk-3.0 xvfb xfwm4 dbus-x11 x11-utils
+      - name: Lint
+        run: pipx install ruff && ruff check .
+      - name: Unit tests and imports
+        run: |
+          /usr/bin/python3 -m unittest discover -s tests -v
+          /usr/bin/python3 -m compileall -q xfce4_sweaters scripts
+          /usr/bin/python3 -m xfce4_sweaters check-config
+      - name: XFCE integration smoke test
+        run: dbus-run-session -- xvfb-run -a -s '-screen 0 1280x800x24 +extension Composite' /usr/bin/python3 tests/smoke_x11.py

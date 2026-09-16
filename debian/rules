@@ -1,0 +1,7 @@
+#!/usr/bin/make -f
+# Tests already run in the tests workflow; the package workflow exercises the installed package instead.
+export PYBUILD_NAME=xfce4_sweaters
+export PYBUILD_DISABLE=test
+
+%:
+	dh $@ --with python3 --buildsystem=pybuild
