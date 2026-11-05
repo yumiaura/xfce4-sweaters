@@ -26,7 +26,7 @@ def validate_style(data, ids):
         raise ValueError(f"Unknown texture: {data['texture']}")
     if 'color' in data and (not isinstance(data['color'], str) or not (data['color'] == 'random' or re.fullmatch(r'#[0-9a-fA-F]{6}', data['color']))):
         raise ValueError('Color must be random or #RRGGBB')
-    for key, low, high in [('width', 4, 64), ('stitch', 3, 12)]:
+    for key, low, high in [('width', 4, 64), ('stitch', 1, 12)]:
         if key in data and (type(data[key]) is not int or not low <= data[key] <= high):
             raise ValueError(f'{key} must be an integer between {low} and {high}')
 

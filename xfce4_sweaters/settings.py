@@ -30,7 +30,7 @@ class Settings(Gtk.Window):
         self.width = Gtk.SpinButton.new_with_range(4,64,1)
         self.width.set_value(controller.cfg['width'])
         general.pack_start(self.row('Border width (px)',self.width),False,False,0)
-        self.stitch = Gtk.SpinButton.new_with_range(3,12,1)
+        self.stitch = Gtk.SpinButton.new_with_range(1,12,1)
         self.stitch.set_value(controller.cfg['stitch'])
         general.pack_start(self.row('Stitch size (px)',self.stitch),False,False,0)
         self.opacity = Gtk.SpinButton.new_with_range(0.1,1,0.05)

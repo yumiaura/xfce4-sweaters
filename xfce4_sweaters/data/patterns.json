@@ -747,5 +747,85 @@
     "colors": [
       "#f2d2dc"
     ]
+  },
+  {
+    "id": "red",
+    "name": "Red",
+    "rows": [
+      "a"
+    ],
+    "colors": [
+      "#cc0000"
+    ]
+  },
+  {
+    "id": "orange",
+    "name": "Orange",
+    "rows": [
+      "a"
+    ],
+    "colors": [
+      "#f57900"
+    ]
+  },
+  {
+    "id": "yellow",
+    "name": "Yellow",
+    "rows": [
+      "a"
+    ],
+    "colors": [
+      "#edd400"
+    ]
+  },
+  {
+    "id": "green",
+    "name": "Green",
+    "rows": [
+      "a"
+    ],
+    "colors": [
+      "#73d216"
+    ]
+  },
+  {
+    "id": "gray",
+    "name": "Gray",
+    "rows": [
+      "a"
+    ],
+    "colors": [
+      "#555555"
+    ]
+  },
+  {
+    "id": "blue",
+    "name": "Blue",
+    "rows": [
+      "a"
+    ],
+    "colors": [
+      "#3465a4"
+    ]
+  },
+  {
+    "id": "purple",
+    "name": "Purple",
+    "rows": [
+      "a"
+    ],
+    "colors": [
+      "#75507b"
+    ]
+  },
+  {
+    "id": "black",
+    "name": "Black",
+    "rows": [
+      "a"
+    ],
+    "colors": [
+      "#000000"
+    ]
   }
 ]

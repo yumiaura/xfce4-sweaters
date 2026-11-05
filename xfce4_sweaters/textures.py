@@ -52,6 +52,8 @@ class Registry:
                 return image.convert('RGBA')
         spec = self.specs[texture]
         rows = spec['rows']
+        if stitch == 1 and len(spec['colors']) == 1 and set(''.join(rows)) == {'a'}:
+            return Image.new('RGBA', (1, 1), ImageColor.getcolor(spec['colors'][0], 'RGBA'))
         scale = 3
         w, h = len(rows[0]) * stitch, len(rows) * stitch
         tile = Image.new('RGB', (w * scale, h * scale), shade(color, 0.50))
@@ -78,6 +80,8 @@ def shade(color, factor):
     return tuple(min(255, round(c*factor)) for c in ImageColor.getrgb(color))
 
 def strip(tile, length, width):
+    if tile.width == 1 and tile.height == 1:
+        return Image.new('RGBA', (length, width), tile.getpixel((0, 0)))
     out = Image.new('RGBA', (length, width))
     for y in range(0, width, tile.height):
         for x in range(0, length, tile.width):

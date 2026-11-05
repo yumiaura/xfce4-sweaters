@@ -13,7 +13,7 @@ It illustrates the textures; it is not a screenshot of a running XFCE session.
 
 ## Features
 
-- 47 built-in knitting charts: stripes, zigzags, checks, cables, floral
+- 55 built-in knitting charts: stripes, zigzags, checks, cables, floral
   motifs and colour palettes.
 - A random pattern and colour for every window by default. The choice does
   not change on focus, move, minimize or workspace switch.
