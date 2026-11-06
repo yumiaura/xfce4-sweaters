@@ -1,6 +1,6 @@
 # XFCE4 Sweaters
 
-Knitted borders for XFCE4 windows on Linux. Every window gets its own
+Knitted borders for XFCE4 windows on Linux and FreeBSD. Every window gets its own
 pattern: random by default, or one you choose.
 
 **First experimental release. XFCE4 / Xfwm4, X11, compositor
@@ -31,7 +31,9 @@ contents. A transparent centre and an empty input area let you click and
 resize windows as usual. Stacking is tied to each window: the border of a
 lower window stays below any window that overlaps it.
 
-## Installation: Ubuntu 24.04 / Xubuntu
+## Installation
+
+### Ubuntu 24.04 / Xubuntu
 
 Run the commands in a terminal inside your graphical XFCE session:
 
@@ -90,6 +92,23 @@ display compositing**.
 If the command is not found, use the full path `~/.local/bin/xfce4-sweaters`.
 The application also appears in the XFCE menu. Left-click the panel icon to
 open the settings; right-click for the pause, shuffle and quit menu.
+
+### FreeBSD
+
+XFCE4 Sweaters is available in FreeBSD. Install the package:
+
+```bash
+pkg install xfce4-sweaters
+```
+
+Or build it from the ports collection:
+
+```bash
+cd /usr/ports/x11/xfce4-sweaters/ && make install clean
+```
+
+This installs the command, the menu entry and an autostart entry, and
+pulls the runtime dependencies.
 
 ## Choosing a texture
 
