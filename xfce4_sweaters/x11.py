@@ -7,6 +7,7 @@ class Client:
     xid: int
     frame: int
     wm_class: str
+    wm_instance: str
     title: str
     x: int
     y: int
@@ -96,8 +97,8 @@ class Tracker:
                     title = title.decode('utf-8','replace')
                 if not isinstance(title,str) or not title:
                     title = win.get_wm_name() or ''
-                result.append(Client(int(xid),frame.id,wm_class[-1] or wm_class[0],str(title),
-                                     pos.x,pos.y,geom.width,geom.height,int(xid)==active))
+                result.append(Client(int(xid),frame.id,wm_class[1] or wm_class[0],wm_class[0] or wm_class[1],
+                                     str(title),pos.x,pos.y,geom.width,geom.height,int(xid)==active))
             except (error.XError, AttributeError, UnicodeError):
                 # A client may disappear between any two X requests.
                 continue

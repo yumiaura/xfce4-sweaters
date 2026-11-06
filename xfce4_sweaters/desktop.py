@@ -136,9 +136,12 @@ class Controller:
             keep = set()
             if self.cfg['enabled']:
                 for client in self.clients:
-                    style = config.style_for(self.cfg,client.wm_class,client.title)
+                    style = config.style_for(self.cfg,client.wm_class,client.wm_instance,client.title)
                     style.update(self.overrides.get(client.xid,{}))
-                    style = self.registry.resolve(style,f'{client.wm_class}:{client.xid}',self.cfg['seed'])
+                    identity = f'{client.wm_class}:{client.xid}'
+                    if client.wm_instance and client.wm_instance != client.wm_class:
+                        identity = f'{client.wm_class}/{client.wm_instance}:{client.xid}'
+                    style = self.registry.resolve(style, identity, self.cfg['seed'])
                     if style['texture'] == 'off' or min(client.width,client.height) < 2:
                         continue
                     if max(client.width,client.height)+2*style['width'] > 16384:

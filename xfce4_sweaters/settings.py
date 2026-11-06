@@ -121,7 +121,9 @@ class Settings(Gtk.Window):
         self.window.remove_all()
         self.window_clients={str(c.xid):c for c in self.controller.clients}
         for key,client in self.window_clients.items():
-            self.window.append(key,f'{client.wm_class}: {client.title[:65]}')
+            label = f'{client.wm_class}/{client.wm_instance}' if client.wm_class and client.wm_instance \
+                    else (client.wm_class or client.wm_instance or '?')
+            self.window.append(key, f'{label}: {client.title[:65]}')
         if not previous or not self.window.set_active_id(previous):
             self.window.set_active(0)
 
@@ -145,17 +147,24 @@ class Settings(Gtk.Window):
     def assign_app(self,*_):
         try:
             client,style=self.selection()
-            if not client.wm_class:
+            if not client.wm_class and not client.wm_instance:
                 raise ValueError('The window has no WM_CLASS; use the per-window setting instead.')
             # Escape fnmatch metacharacters so a literal WM_CLASS is safe as a rule.
-            literal=''.join({'[':'[[]','*':'[*]','?':'[?]'}.get(c,c) for c in client.wm_class)
-            rule={'wm_class':literal,**style}
+            def escape(s):
+                return ''.join({'[':'[[]','*':'[*]','?':'[?]'}.get(c,c) for c in s)
+            rule = dict(style)
+            if client.wm_class:
+                rule['wm_class'] = escape(client.wm_class)
+            if client.wm_instance:
+                rule['wm_instance'] = escape(client.wm_instance)
             title=self.title_pattern.get_text().strip()
             if title:
                 rule['title']=title
             cfg=copy.deepcopy(self.controller.cfg)
-            cfg['rules']=[r for r in cfg['rules'] if (r.get('wm_class'),r.get('title'))!=(rule['wm_class'],rule.get('title'))]
-            cfg['rules'].insert(0,rule)
+            key = (rule.get('wm_class'), rule.get('wm_instance'), rule.get('title'))
+            cfg['rules'] = [r for r in cfg['rules']
+                            if (r.get('wm_class'), r.get('wm_instance'), r.get('title')) != key]
+            cfg['rules'].insert(0, rule)
             self.controller.apply(cfg)
             self.controller.overrides.pop(client.xid,None)
             self.refresh_rules()
@@ -175,7 +184,8 @@ class Settings(Gtk.Window):
     def refresh_rules(self):
         self.rules.remove_all()
         for i,rule in enumerate(self.controller.cfg['rules']):
-            self.rules.append(str(i),f"{rule.get('wm_class','*')} / {rule.get('title','*')} → {rule.get('texture','default')}")
+            wm = '/'.join(filter(None, [rule.get('wm_class'), rule.get('wm_instance')])) or '*'
+            self.rules.append(str(i), f"{wm} / {rule.get('title','*')} → {rule.get('texture','default')}")
         self.rules.set_active(0)
 
     def remove_rule(self,*_):

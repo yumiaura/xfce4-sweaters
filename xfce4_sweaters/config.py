@@ -51,11 +51,11 @@ def validate(data, ids):
     if not isinstance(cfg['rules'], list) or len(cfg['rules']) > 256:
         raise ValueError('rules must be a list with at most 256 entries')
     for rule in cfg['rules']:
-        if not isinstance(rule, dict) or set(rule) - {'wm_class', 'title', 'texture', 'color', 'width', 'stitch'}:
+        if not isinstance(rule, dict) or set(rule) - {'wm_class', 'wm_instance', 'title', 'texture', 'color', 'width', 'stitch'}:
             raise ValueError('Invalid rule keys')
-        if not any(k in rule for k in ('wm_class', 'title')):
-            raise ValueError('Each rule needs wm_class or title')
-        for key in ('wm_class', 'title'):
+        if not any(k in rule for k in ('wm_class', 'wm_instance', 'title')):
+            raise ValueError('Each rule needs wm_class, wm_instance or title')
+        for key in ('wm_class', 'wm_instance', 'title'):
             if key in rule and (not isinstance(rule[key], str) or not 1 <= len(rule[key]) <= 256):
                 raise ValueError(f'{key} must be a non-empty glob pattern up to 256 characters')
         validate_style(rule, ids)
@@ -83,12 +83,12 @@ def save(path, data, ids):
         if os.path.exists(temp):
             os.unlink(temp)
 
-def style_for(cfg, wm_class, title):
-    """First matching rule wins; both match conditions are case-insensitive globs."""
+def style_for(cfg, wm_class, wm_instance, title):
+    """First matching rule wins; all match conditions are case-insensitive globs."""
     style = {k: cfg[k] for k in ('texture', 'color', 'width', 'stitch')}
     for rule in cfg['rules']:
         if all(fnmatch.fnmatchcase(value.casefold(), rule.get(key, '*').casefold())
-               for key, value in [('wm_class', wm_class), ('title', title)]):
+               for key, value in [('wm_class', wm_class), ('wm_instance', wm_instance), ('title', title)]):
             style.update({k: rule[k] for k in style if k in rule})
             break
     return style
